@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	
+	<record id="view_form_mi_modulo" model="ir.ui.view">
+		<field name="name">Mi Modulito cachimbon</field>
+		<field name="model">mi.modulo</field>
+		<field name="arch" type="xml">
+			<search>
+				<field name="name"/>
+				<filter string="Not Done" domain="[('is_done','=',False)]" />
+				<filter string="Done" domain="[('is_done','!=',False)]" />
+			</search>
+			<tree colors="gray:is_done==True">
+				<field name="name" />
+				<field name="is_done" />
+			</tree>
+			<form string="Mi Modulux">
+				<header>
+					<button name="do_toggle_done" type="object" string="Toggle Done" class="oe_highlight"/>
+					<button name="do_clear_done" type="object" string="Clear All Done"/>
+				</header>
+				<sheet>
+					<group name="group_top">
+						<group name="group_left">
+							<field name="name" />			
+						</group>
+						<group name="group_right">
+							<field name="is_done" />
+							<field name="active" readonly="1" />	
+						</group>
+					</group>
+				</sheet>
+			</form>
+		</field>
+	</record>
+
+	<!-- Action to open MI MOdulo List -->
+	<act_window id="action_mi_modulo" name="Mi Modulo" res_model="mi.modulo" view_mode="tree,form" />
+		
+	<!-- <record id="action_mi_modulo" model="mi.modulo" >
+		<field name = "Description">Description</field>
+	</record>
+ -->
+	 <!-- Menu item to open Mi modulo list -->
+	 <menuitem id="menu_mi_modulo" name="Modulito" action="action_mi_modulo" />
+	
+</odoo>
